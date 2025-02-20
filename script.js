@@ -2,7 +2,8 @@ const script = document.currentScript;
 const url = new URL(script.src)
 const apiKey = url.searchParams.get("apiKey")
 
-const baseUrl= 'https://bloom-engine.netlify.app/.netlify/functions/api'
+// const baseUrl = 'https://bloom-engine.netlify.app/.netlify/functions/api'
+const baseUrl = 'http://localhost:8888/.netlify/functions/api'
 
 function getInputData() {
     const inputData = {};
@@ -52,16 +53,16 @@ fetch(`${baseUrl}/initialize`,
                 },
                 body: JSON.stringify(req)
             })
-            .then(response => response.json())
-            .then(data => {
-                output=data.data
-                console.log(output)
-            Object.keys(output).forEach(result => {
-                document.querySelector(`[data-label="${result}"]`).innerText = document.querySelector(`[data-label="${result}"]`).innerText.replace('{}', output[result])
-            })
-        })
-            .catch(error => console.error('Error:', error));
+                .then(response => response.json())
+                .then(data => {
+                    output = data.data
+                    console.log(output)
+                    Object.keys(output).forEach(result => {
+                        document.querySelector(`[data-label="${result}"]`).innerText = document.querySelector(`[data-label="${result}"]`).innerText.replace('{}', output[result])
+                    })
+                })
+                .catch(error => console.error('Error:', error));
 
-            
+
         })
     });
