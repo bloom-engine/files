@@ -2,8 +2,7 @@ const script = document.currentScript;
 const url = new URL(script.src)
 const apiKey = url.searchParams.get("apiKey")
 
-const baseUrl = 'https://bloom-engine.netlify.app/.netlify/functions/api'
-// const baseUrl = 'http://localhost:8888/.netlify/functions/api'
+const baseUrl = 'https://app.bloom-engine.cloud/api'
 
 const getInputData = () => {
     const inputData = {};
@@ -23,6 +22,8 @@ const getOutputLabels = () => {
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#bloom-container form').addEventListener('submit', (event) => {
         event.preventDefault()
+        const submitBtn = document.querySelector("#bloom-container form button")
+        submitBtn.disabled = true;
 
         const req = {
             inputs: getInputData(),
@@ -45,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 Object.keys(output).forEach(result => {
                     document.querySelector(`[data-label="${result}"]`).innerText = output[result]
                 })
+            }).finally(()=>{
+                submitBtn.disabled = false;
             })
     })
 });
