@@ -1,0 +1,31 @@
+.bloom-calculator-mask {
+  background-color: rgba(0, 0, 0, 0.547);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.bloom-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bloom-loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #000000;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+.bloom-loading-text {
+  padding-top: 1rem;
+}
